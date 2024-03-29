@@ -5,45 +5,60 @@
 #include "gameobject.h"
 
 Character::Character()
-    : GameObject(GameObject::Character, QPixmap(":/sprites final/personaje sprites/personaje_right_1.png")) {
+    : GameObject(GameObject::Character, set_scale(QPixmap(":/sprites final/personaje sprites/personaje_right_1.png"), scale_factor)) {
 
 
     setPixmap(pixmap());
     setPos(x_inicial_personaje, y_inicial_personaje);
+    moveSpeed = 2;
 
     Anim_Frame = 0;  //todo esto simplemente manejo de sprites, esto en funcion, load_sprites
+    animation[Up].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_up_1.png"), scale_factor));
+    animation[Up].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_up_2.png"), scale_factor));
+    animation[Up].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_up_3.png"), scale_factor));
+    animation[Up].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_up_4.png"), scale_factor));
 
-    //caminar arriba
-    animation[Up].push_back(QPixmap(":/sprites final/personaje sprites/personaje_up_1.png"));
+    animation[Right].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_right_1.png"), scale_factor));
+    animation[Right].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_right_2.png"), scale_factor));
+    animation[Right].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_right_3.png"), scale_factor));
+    animation[Right].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_right_4.png"), scale_factor));
 
-    animation[Up].push_back(QPixmap(":/sprites final/personaje sprites/personaje_up_2.png"));
-    animation[Up].push_back(QPixmap(":/sprites final/personaje sprites/personaje_up_3.png"));
-    animation[Up].push_back(QPixmap(":/sprites final/personaje sprites/personaje_up_4.png"));
+    animation[Down].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_down_1.png"), scale_factor));
+    animation[Down].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_down_2.png"), scale_factor));
+    animation[Down].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_down_3.png"), scale_factor));
+    animation[Down].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_down_4.png"), scale_factor));
 
-    // caminar derecha
-    animation[Right].push_back(QPixmap(":/sprites final/personaje sprites/personaje_right_1.png"));
+    animation[Left].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_left_1.png"), scale_factor));
+    animation[Left].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_left_2.png"), scale_factor));
+    animation[Left].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_left_3.png"), scale_factor));
+    animation[Left].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_left_4.png"), scale_factor));
 
-    animation[Right].push_back(QPixmap(":/sprites final/personaje sprites/personaje_right_2.png"));
-    animation[Right].push_back(QPixmap(":/sprites final/personaje sprites/personaje_right_3.png"));
-    animation[Right].push_back(QPixmap(":/sprites final/personaje sprites/personaje_right_4.png"));
+}
+/*
+void Character::load_sprites() {  //ASSERT failure in QList::operator[]: "index out of range", file C:/Qt/6.6.1/mingw_64/include/QtCore/qlist.h, line 436
+    Anim_Frame = 0;
+    animation[Up].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_up_1.png"), scale_factor));
+    animation[Up].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_up_2.png"), scale_factor));
+    animation[Up].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_up_3.png"), scale_factor));
+    animation[Up].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_up_4.png"), scale_factor));
 
-    // caminar abajo
-    animation[Down].push_back(QPixmap(":/sprites final/personaje sprites/personaje_down_1.png"));
+    animation[Right].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_right_1.png"), scale_factor));
+    animation[Right].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_right_2.png"), scale_factor));
+    animation[Right].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_right_3.png"), scale_factor));
+    animation[Right].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_right_4.png"), scale_factor));
 
-    animation[Down].push_back(QPixmap(":/sprites final/personaje sprites/personaje_down_2.png"));
-    animation[Down].push_back(QPixmap(":/sprites final/personaje sprites/personaje_down_3.png"));
-    animation[Down].push_back(QPixmap(":/sprites final/personaje sprites/personaje_down_4.png"));
+    animation[Down].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_down_1.png"), scale_factor));
+    animation[Down].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_down_2.png"), scale_factor));
+    animation[Down].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_down_3.png"), scale_factor));
+    animation[Down].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_down_4.png"), scale_factor));
 
-    //caminar izquierda
-    animation[Left].push_back(QPixmap(":/sprites final/personaje sprites/personaje_left_1.png"));
-
-    animation[Left].push_back(QPixmap(":/sprites final/personaje sprites/personaje_left_2.png"));
-    animation[Left].push_back(QPixmap(":/sprites final/personaje sprites/personaje_left_3.png"));
-    animation[Left].push_back(QPixmap(":/sprites final/personaje sprites/personaje_left_4.png"));
+    animation[Left].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_left_1.png"), scale_factor));
+    animation[Left].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_left_2.png"), scale_factor));
+    animation[Left].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_left_3.png"), scale_factor));
+    animation[Left].push_back(set_scale(QPixmap(":/sprites final/personaje sprites/personaje_left_4.png"), scale_factor));
 
 }
 
-/*
 int Character::getPosX() const {
     return posX;
 }
@@ -91,7 +106,7 @@ void Character::moveUp() {  //metodos de movimiento, el problema es que esto no
         Anim_Frame = 0;
     }
     setPixmap(animation[Up][Anim_Frame]);   //Frame de la animación
-    setY(static_cast<int>(y())-1);          //Mover objeto
+    setY(static_cast<int>(y()) - moveSpeed);          //Mover objeto
 }
 
 void Character::moveDown() {
@@ -100,7 +115,7 @@ void Character::moveDown() {
         Anim_Frame = 0;
     }
     setPixmap(animation[Down][Anim_Frame]);   //Frame de la animación
-    setY(static_cast<int>(y())+1);          //Mover objeto
+    setY(static_cast<int>(y()) + moveSpeed);          //Mover objeto
 }
 
 void Character::moveLeft() {
@@ -109,7 +124,7 @@ void Character::moveLeft() {
         Anim_Frame = 0;
     }
     setPixmap(animation[Left][Anim_Frame]);   //Frame de la animación
-    setX(static_cast<int>(x())-1);          //Mover objeto
+    setX(static_cast<int>(x())- moveSpeed);          //Mover objeto
 }
 
 void Character::moveRight() {
@@ -118,7 +133,7 @@ void Character::moveRight() {
         Anim_Frame = 0;
     }
     setPixmap(animation[Right][Anim_Frame]);   //Frame de la animación
-    setX(static_cast<int>(x())+1);          //Mover objeto
+    setX(static_cast<int>(x())+ moveSpeed);          //Mover objeto
 }
 /*
 void Character::takeDamage(int damage) {

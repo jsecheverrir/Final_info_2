@@ -51,5 +51,8 @@ private:
 private slots:
     void cambiar_pantalla();
     void keyPressEvent(QKeyEvent *k);
+    void iniciarMovimientoEnemigo();
+
+public slots:
 };
 #endif // MAINWINDOW_H

@@ -30,10 +30,13 @@
 //macros personaje
 #define x_inicial_personaje 10
 #define y_inicial_personaje 210
+#define scale_factor 2
 
 //macros enemigo
 
 #define x_inicial_enemigo 200
 #define y_inicial_enemigo 180
+#define maxRight 350 // Máximo límite derecho
+#define maxLeft 200  // Máximo límite izquierdo
 
 #endif // MACROS_GAME_H

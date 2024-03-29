@@ -6,6 +6,7 @@
 #include "gameobject.h"
 
 class Character : public GameObject {
+    int moveSpeed;
 public:
     enum ObjectType { Heart, Orbe };
 
@@ -29,6 +30,8 @@ public:
     void moveRight();
 
     void takeDamage(int damage);
+
+    void load_sprites();
 
 private:
     int posX;

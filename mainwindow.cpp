@@ -4,6 +4,7 @@
 #include <QKeyEvent>
 
 #include "character.h"
+#include "enemigo.h"
 
 #include "macros_game.h"
 
@@ -12,7 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //time = new QTimer;
+
+
     set_off_windows();
     img = new picture_management;
     connect(ui->boton1, SIGNAL(clicked(bool)), this, SLOT(cambiar_pantalla()));
@@ -69,6 +71,13 @@ void MainWindow::load_game_window()
     scene->addPixmap(picture);
     scene->addItem(character);
     scene->addItem(enemigo);
+
+
+    //connect(this, SIGNAL(keyPressEvent(QKeyEvent*)), enemigo, SLOT(startMoving()));
+    //connect(ui->boton1, SIGNAL(clicked()), this, SLOT(iniciarMovimientoEnemigo()));
+    time = new QTimer;
+    connect(time, &QTimer::timeout, this, &MainWindow::iniciarMovimientoEnemigo);
+    time->start(50); // Iniciar el temporizador para controlar el movimiento automático
 
 
     ui->graphicsView->setScene(scene);
@@ -128,3 +137,7 @@ void MainWindow::keyPressEvent(QKeyEvent *k)
     }
 }
 
+void MainWindow::iniciarMovimientoEnemigo() {
+    enemigo->moveAutomatically();
+
+}

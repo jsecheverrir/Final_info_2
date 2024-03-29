@@ -23,12 +23,13 @@ public:
     void setDirection(Direction direction);
     void setNextDirection(Direction nextDirection);
     QPixmap set_scale(QPixmap img, int scale);
+    Direction direction;
 
 private:
     ObjectType type;
     int posX;
     int posY;
-    Direction direction;
+
     Direction nextDirection;
 };
 
