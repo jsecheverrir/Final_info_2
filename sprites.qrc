@@ -43,5 +43,6 @@
         <file>sprites final/enemigo/enemigo_left_3.png</file>
         <file>sprites final/enemigo/enemigo_left_4.png</file>
         <file>sprites final/enemigo/enemigo_left_5.png</file>
+        <file>sprites final/heart.png</file>
     </qresource>
 </RCC>

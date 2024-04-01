@@ -12,34 +12,46 @@ Enemigo::Enemigo() :GameObject(GameObject::Enemy, QPixmap(":/sprites final/enemi
     setPos(x_inicial_enemigo, y_inicial_enemigo);
     direction = Right;
     moveSpeed = 2;
-
-    Anim_Frame = 0;
-    animation[Up].push_back((QPixmap(":/sprites final/enemigo/enemigo_up_1.png")));
-    animation[Up].push_back((QPixmap(":/sprites final/enemigo/enemigo_up_2.png")));
-    animation[Up].push_back((QPixmap(":/sprites final/enemigo/enemigo_up_3.png")));
-    animation[Up].push_back((QPixmap(":/sprites final/enemigo/enemigo_up_4.png")));
-    animation[Up].push_back((QPixmap(":/sprites final/enemigo/enemigo_up_5.png")));
-
-    animation[Right].push_back((QPixmap(":/sprites final/enemigo/enemigo_right_1.png")));
-    animation[Right].push_back((QPixmap(":/sprites final/enemigo/enemigo_right_2.png")));
-    animation[Right].push_back((QPixmap(":/sprites final/enemigo/enemigo_right_3.png")));
-    animation[Right].push_back((QPixmap(":/sprites final/enemigo/enemigo_right_4.png")));
-    animation[Right].push_back((QPixmap(":/sprites final/enemigo/enemigo_right_5.png")));
-
-    animation[Down].push_back((QPixmap(":/sprites final/enemigo/enemigo_down_1.png")));
-    animation[Down].push_back((QPixmap(":/sprites final/enemigo/enemigo_down_2.png")));
-    animation[Down].push_back((QPixmap(":/sprites final/enemigo/enemigo_down_3.png")));
-    animation[Down].push_back((QPixmap(":/sprites final/enemigo/enemigo_down_4.png")));
-    animation[Down].push_back((QPixmap(":/sprites final/enemigo/enemigo_down_5.png")));
-
-    animation[Left].push_back((QPixmap(":/sprites final/enemigo/enemigo_left_1.png")));
-    animation[Left].push_back((QPixmap(":/sprites final/enemigo/enemigo_left_2.png")));
-    animation[Left].push_back((QPixmap(":/sprites final/enemigo/enemigo_left_3.png")));
-    animation[Left].push_back((QPixmap(":/sprites final/enemigo/enemigo_left_4.png")));
-    animation[Left].push_back((QPixmap(":/sprites final/enemigo/enemigo_left_5.png")));
+    loadSprites();
 
 
 }
+
+void Enemigo::loadSprites() {
+    // Limpiamos la animación antes de cargar nuevos sprites, para que no haya animaciones anteriores en la lista
+    for (int i = 0; i < 4; ++i) {
+        animation[i].clear();
+    }
+
+    // Carga de sprites para cada dirección
+    animation[Up].push_back(QPixmap(":/sprites final/enemigo/enemigo_up_1.png"));
+    animation[Up].push_back(QPixmap(":/sprites final/enemigo/enemigo_up_2.png"));
+    animation[Up].push_back(QPixmap(":/sprites final/enemigo/enemigo_up_3.png"));
+    animation[Up].push_back(QPixmap(":/sprites final/enemigo/enemigo_up_4.png"));
+    animation[Up].push_back(QPixmap(":/sprites final/enemigo/enemigo_up_5.png"));
+
+    animation[Right].push_back(QPixmap(":/sprites final/enemigo/enemigo_right_1.png"));
+    animation[Right].push_back(QPixmap(":/sprites final/enemigo/enemigo_right_2.png"));
+    animation[Right].push_back(QPixmap(":/sprites final/enemigo/enemigo_right_3.png"));
+    animation[Right].push_back(QPixmap(":/sprites final/enemigo/enemigo_right_4.png"));
+    animation[Right].push_back(QPixmap(":/sprites final/enemigo/enemigo_right_5.png"));
+
+    animation[Down].push_back(QPixmap(":/sprites final/enemigo/enemigo_down_1.png"));
+    animation[Down].push_back(QPixmap(":/sprites final/enemigo/enemigo_down_2.png"));
+    animation[Down].push_back(QPixmap(":/sprites final/enemigo/enemigo_down_3.png"));
+    animation[Down].push_back(QPixmap(":/sprites final/enemigo/enemigo_down_4.png"));
+    animation[Down].push_back(QPixmap(":/sprites final/enemigo/enemigo_down_5.png"));
+
+    animation[Left].push_back(QPixmap(":/sprites final/enemigo/enemigo_left_1.png"));
+    animation[Left].push_back(QPixmap(":/sprites final/enemigo/enemigo_left_2.png"));
+    animation[Left].push_back(QPixmap(":/sprites final/enemigo/enemigo_left_3.png"));
+    animation[Left].push_back(QPixmap(":/sprites final/enemigo/enemigo_left_4.png"));
+    animation[Left].push_back(QPixmap(":/sprites final/enemigo/enemigo_left_5.png"));
+}
+
+
+
+
 
 void Enemigo::moveAutomatically() {
     int newX = x();
@@ -63,6 +75,5 @@ void Enemigo::moveAutomatically() {
         setPixmap(animation[Left][Anim_Frame]);
     }
 
-    // Incrementar el índice del frame de animación
-    Anim_Frame = (Anim_Frame + 1) % animation[direction].size();
+    Anim_Frame = (Anim_Frame + 1) % animation[direction].size(); // Incrementar frame de animacion
 }

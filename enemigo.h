@@ -14,6 +14,7 @@ public:
 private:
     int Anim_Frame;
     QVector<QPixmap> animation[4];
+    void loadSprites();
 };
 
 #endif // ENEMIGO_H

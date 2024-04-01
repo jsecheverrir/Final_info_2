@@ -28,20 +28,23 @@ public:
     void moveDown();
     void moveLeft();
     void moveRight();
-
     void takeDamage(int damage);
-
     void load_sprites();
+    void addLifeSpritesToScene(QGraphicsScene* scene);
+
 
 private:
     int posX;
     int posY;
     int health;
+    int maxHealth;
     int strength;
     int resistance;
-    QGraphicsScene* scene;
     int Anim_Frame;
+    QGraphicsScene* scene;
     QVector<QPixmap> animation[4];
+    QVector<QGraphicsPixmapItem*> lifeSprites;
+    Character* vida;
 };
 
 #endif // CHARACTER_H

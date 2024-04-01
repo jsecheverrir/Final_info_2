@@ -39,4 +39,7 @@
 #define maxRight 350 // Máximo límite derecho
 #define maxLeft 200  // Máximo límite izquierdo
 
+//macros vidas
+#define life_scale 0.2
+
 #endif // MACROS_GAME_H

@@ -33,6 +33,8 @@ MainWindow::~MainWindow()
     delete ui;
     delete img;
     delete Scene;
+    delete character;
+    delete enemigo;
 }
 
 void MainWindow::load_start_window()
@@ -71,10 +73,9 @@ void MainWindow::load_game_window()
     scene->addPixmap(picture);
     scene->addItem(character);
     scene->addItem(enemigo);
+    character->addLifeSpritesToScene (scene);
 
 
-    //connect(this, SIGNAL(keyPressEvent(QKeyEvent*)), enemigo, SLOT(startMoving()));
-    //connect(ui->boton1, SIGNAL(clicked()), this, SLOT(iniciarMovimientoEnemigo()));
     time = new QTimer;
     connect(time, &QTimer::timeout, this, &MainWindow::iniciarMovimientoEnemigo);
     time->start(50); // Iniciar el temporizador para controlar el movimiento automático
@@ -120,18 +121,22 @@ void MainWindow::keyPressEvent(QKeyEvent *k)
     switch (k->key()) {
     case Qt::Key_W:
         character->setNextDirection(GameObject::Up);
+        character->load_sprites();
         character->moveUp();
         break;
     case Qt::Key_A:
         character->setNextDirection(GameObject::Left);
+        character->load_sprites();
         character->moveLeft();
         break;
     case Qt::Key_S:
         character->setNextDirection(GameObject::Down);
+        character->load_sprites();
         character->moveDown();
         break;
     case Qt::Key_D:
         character->setNextDirection(GameObject::Right);
+        character->load_sprites();
         character->moveRight();
         break;
     }
