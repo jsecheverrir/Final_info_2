@@ -18,7 +18,7 @@ Enemigo::Enemigo() :GameObject(GameObject::Enemy, QPixmap(":/sprites final/enemi
 }
 
 void Enemigo::loadSprites() {
-    // Limpiamos la animación antes de cargar nuevos sprites, para que no haya animaciones anteriores en la lista
+    // Limpiamos la animación antes de cargar nuevos sprites,
     for (int i = 0; i < 4; ++i) {
         animation[i].clear();
     }
@@ -49,6 +49,10 @@ void Enemigo::loadSprites() {
     animation[Left].push_back(QPixmap(":/sprites final/enemigo/enemigo_left_5.png"));
 }
 
+
+
+
+
 void Enemigo::moveAutomatically() {
     int newX = x();
     if (direction == Right) {
@@ -71,5 +75,6 @@ void Enemigo::moveAutomatically() {
         setPixmap(animation[Left][Anim_Frame]);
     }
 
-    Anim_Frame = (Anim_Frame + 1) % animation[direction].size(); // Incrementar frame de animacion
+    // Incrementar el índice del frame de animación
+    Anim_Frame = (Anim_Frame + 1) % animation[direction].size();
 }

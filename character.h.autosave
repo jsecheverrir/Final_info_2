@@ -11,7 +11,6 @@ public:
     enum ObjectType { Heart, Orbe };
 
     Character();
-    ~Character();
 
     int getPosX() const;
     int getPosY() const;
@@ -31,21 +30,19 @@ public:
     void moveRight();
     void takeDamage(int damage);
     void load_sprites();
-    void addLifeSpritesToScene(QGraphicsScene* scene);
-
+    
 
 private:
     int posX;
     int posY;
     int health;
-    int maxHealth;
+    int maxhealth;
     int strength;
     int resistance;
     int Anim_Frame;
     QGraphicsScene* scene;
     QVector<QPixmap> animation[4];
-    std::vector<GameObject*> lifeSprites;
-    Character* vida;
+    QVector<QGraphicsPixmapItem*> lifeSprites;
 };
 
 #endif // CHARACTER_H

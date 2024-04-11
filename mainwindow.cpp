@@ -78,7 +78,7 @@ void MainWindow::load_game_window()
 
     time = new QTimer;
     connect(time, &QTimer::timeout, this, &MainWindow::iniciarMovimientoEnemigo);
-    time->start(50); // Iniciar el temporizador para controlar el movimiento automático
+    time->start(50); // Iniciar el temporizador
 
 
     ui->graphicsView->setScene(scene);

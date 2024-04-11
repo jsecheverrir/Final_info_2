@@ -36,10 +36,12 @@
 
 #define x_inicial_enemigo 200
 #define y_inicial_enemigo 180
-#define maxRight 350 // Máximo límite derecho
+#define maxRight 345 // Máximo límite derecho
 #define maxLeft 200  // Máximo límite izquierdo
 
 //macros vidas
-#define life_scale 0.2
+#define life_scale 0.3
+#define initialX 20
+#define initialY 20
 
 #endif // MACROS_GAME_H

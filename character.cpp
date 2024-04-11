@@ -52,12 +52,8 @@ void Character::load_sprites() {
         }
     }
 }
-
 void Character::addLifeSpritesToScene(QGraphicsScene* scene) {
     // Coordenadas iniciales para el primer sprite de vida, poner macros
-    int initialX = 20;
-    int initialY = 20;
-    int spacing = 20; // Espacio entre sprites de vida
 
     QPixmap healthPixmap(":/sprites final/heart.png");
 
@@ -66,14 +62,9 @@ void Character::addLifeSpritesToScene(QGraphicsScene* scene) {
     QPixmap scaledHealthPixmap = healthPixmap.scaled(scaledWidth, scaledHeight);
 
     for (int i = 0; i < health; ++i) {
-        // Crear un nuevo personaje para representar el sprite de vida
+        // Crear un nuevo gameobject para representar el sprite de vida
         GameObject* lifeSprite = new GameObject(GameObject::Life, scaledHealthPixmap);
-
-        // Ajustar la posición del sprite de vida
-        lifeSprite->setPos(initialX + i * (healthPixmap.width() + spacing), initialY);
-
-
-        // Agregar el sprite de vida a la escena
+        lifeSprite->setPos(initialX + i * scaledWidth, initialY);
         scene->addItem(lifeSprite);
     }
 }
@@ -165,3 +156,10 @@ void Character::takeDamage(int damage) {
     health -= finalDamage;
 }
 */
+
+Character::~Character() {
+    // Eliminar los sprites de vida creados anteriormente
+    for (GameObject* lifeSprite : lifeSprites) {
+        delete lifeSprite;
+    }
+}
