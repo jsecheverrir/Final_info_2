@@ -11,13 +11,20 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , character2(nullptr)
+
 {
     ui->setupUi(this);
 
 
     set_off_windows();
     img = new picture_management;
+    game = new game_rules(ui->graphicsView);
     connect(ui->boton1, SIGNAL(clicked(bool)), this, SLOT(cambiar_pantalla()));
+
+
+
+
 
     // Crear una instancia de game_rules y asignarla a game, esto se queda
 
@@ -33,8 +40,8 @@ MainWindow::~MainWindow()
     delete ui;
     delete img;
     delete Scene;
-    delete character;
-    delete enemigo;
+    //delete character;
+    //delete enemigo;
 }
 
 void MainWindow::load_start_window()
@@ -55,35 +62,21 @@ void MainWindow::load_start_window()
 
 void MainWindow::load_game_window()
 {
-    QPixmap picture;
-
     ui->game_scene->setGeometry(0, 0, width(), height());
     ui->graphicsView->setGeometry(ui->game_scene->geometry());
-    img->load_picture(":/sprites final/mapa 1.jpg");
-
-    picture = img->get_picture();
-    resize_widget(picture, ui->game_scene);
-
-    character = new Character;
-    enemigo = new Enemigo;
-
-
-
-    QGraphicsScene *scene = new QGraphicsScene();
-    scene->addPixmap(picture);
-    scene->addItem(character);
-    scene->addItem(enemigo);
-    character->addLifeSpritesToScene (scene);
-
-
-    time = new QTimer;
-    connect(time, &QTimer::timeout, this, &MainWindow::iniciarMovimientoEnemigo);
-    time->start(50); // Iniciar el temporizador
-
-
-    ui->graphicsView->setScene(scene);
+    resize_widget(game_rules::background_picture(1), ui->game_scene);
     ui->game_scene->setVisible(true);
 }
+
+
+void MainWindow::load_level_2(){
+    ui->game_scene->setGeometry(0, 0, width(), height());
+    ui->graphicsView->setGeometry(ui->game_scene->geometry());
+    resize_widget(game_rules::background_picture(2), ui->game_scene);
+    ui->game_scene->setVisible(true);
+}
+
+
 
 void MainWindow::change_window_size(unsigned short width, unsigned short height)
 {
@@ -108,41 +101,28 @@ void MainWindow::set_off_windows()
 {
     ui->start_window->setVisible(false);
     ui->game_scene->setVisible(false);
+    ui->level_2_scene->setVisible(false);
+
 }
 
 void MainWindow::cambiar_pantalla()
 {
+    static int i=0;
     set_off_windows();
-    load_game_window();
+    if(i%2==0) load_game_window();
+    else load_level_2();
+    i++;
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *k)
 {
-    switch (k->key()) {
-    case Qt::Key_W:
-        character->setNextDirection(GameObject::Up);
-        character->load_sprites();
-        character->moveUp();
-        break;
-    case Qt::Key_A:
-        character->setNextDirection(GameObject::Left);
-        character->load_sprites();
-        character->moveLeft();
-        break;
-    case Qt::Key_S:
-        character->setNextDirection(GameObject::Down);
-        character->load_sprites();
-        character->moveDown();
-        break;
-    case Qt::Key_D:
-        character->setNextDirection(GameObject::Right);
-        character->load_sprites();
-        character->moveRight();
-        break;
-    }
+    game->move_character(k);
 }
+
+
 
 void MainWindow::iniciarMovimientoEnemigo() {
-    enemigo->moveAutomatically();
-
+    //enemigo->moveAutomatically();
 }
+
+

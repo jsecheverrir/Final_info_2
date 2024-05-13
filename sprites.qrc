@@ -1,8 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>sprites final/orbes enemigo final.png</file>
-        <file>sprites final/orbes enemigos.png</file>
-        <file>sprites final/orbes personaje.png</file>
         <file>sprites final/primera.png</file>
         <file>sprites final/personaje sprites/personaje_down_1.png</file>
         <file>sprites final/personaje sprites/personaje_down_2.png</file>
@@ -21,28 +18,26 @@
         <file>sprites final/personaje sprites/personaje_up_3.png</file>
         <file>sprites final/personaje sprites/personaje_up_4.png</file>
         <file>sprites final/mapa 1.jpg</file>
-        <file>sprites final/enemigo/enemigo_up_1.png</file>
-        <file>sprites final/enemigo/enemigo_up_2.png</file>
-        <file>sprites final/enemigo/enemigo_up_3.png</file>
+        <file>sprites final/heart.png</file>
         <file>sprites final/enemigo/enemigo_down_1.png</file>
         <file>sprites final/enemigo/enemigo_down_2.png</file>
         <file>sprites final/enemigo/enemigo_down_3.png</file>
         <file>sprites final/enemigo/enemigo_down_4.png</file>
-        <file>sprites final/enemigo/enemigo_down_5.png</file>
-        <file>sprites final/enemigo/enemigo_right_1.png</file>
-        <file>sprites final/enemigo/enemigo_right_2.png</file>
-        <file>sprites final/enemigo/enemigo_right_3.png</file>
-        <file>sprites final/enemigo/enemigo_right_4.png</file>
-        <file>sprites final/enemigo/enemigo_right_5.png</file>
-        <file>sprites final/enemigo/enemigo_up_4.png</file>
-        <file>sprites final/enemigo/enemigo_up_5.png</file>
-        <file>sprites final/enemigo/enemy_hurt_1.png</file>
-        <file>sprites final/enemigo/enemy_hurt_2.png</file>
         <file>sprites final/enemigo/enemigo_left_1.png</file>
         <file>sprites final/enemigo/enemigo_left_2.png</file>
         <file>sprites final/enemigo/enemigo_left_3.png</file>
         <file>sprites final/enemigo/enemigo_left_4.png</file>
-        <file>sprites final/enemigo/enemigo_left_5.png</file>
-        <file>sprites final/heart.png</file>
+        <file>sprites final/enemigo/enemigo_right_1.png</file>
+        <file>sprites final/enemigo/enemigo_right_2.png</file>
+        <file>sprites final/enemigo/enemigo_right_3.png</file>
+        <file>sprites final/enemigo/enemigo_right_4.png</file>
+        <file>sprites final/enemigo/enemigo_up_1.png</file>
+        <file>sprites final/enemigo/enemigo_up_2.png</file>
+        <file>sprites final/enemigo/enemigo_up_3.png</file>
+        <file>sprites final/enemigo/enemigo_up_4.png</file>
+        <file>sprites final/orbes enemigo final/orbes enemigo final.png</file>
+        <file>sprites final/orbes enemigo/orbes enemigos.png</file>
+        <file>sprites final/orbes personaje/orbes personaje.png</file>
+        <file>sprites final/mapa 2.jpg</file>
     </qresource>
 </RCC>

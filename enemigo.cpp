@@ -8,10 +8,12 @@
 
 Enemigo::Enemigo() :GameObject(GameObject::Enemy, QPixmap(":/sprites final/enemigo/enemigo_right_1.png"))  {
 
+    time = new QTimer;
+    connect(time, SIGNAL(timeout()), this, SLOT(moveAutomatically()));
     setPixmap(pixmap());
     setPos(x_inicial_enemigo, y_inicial_enemigo);
     direction = Right;
-    moveSpeed = 2;
+    moveSpeed = 3;
     loadSprites();
 
 
@@ -28,25 +30,21 @@ void Enemigo::loadSprites() {
     animation[Up].push_back(QPixmap(":/sprites final/enemigo/enemigo_up_2.png"));
     animation[Up].push_back(QPixmap(":/sprites final/enemigo/enemigo_up_3.png"));
     animation[Up].push_back(QPixmap(":/sprites final/enemigo/enemigo_up_4.png"));
-    animation[Up].push_back(QPixmap(":/sprites final/enemigo/enemigo_up_5.png"));
 
     animation[Right].push_back(QPixmap(":/sprites final/enemigo/enemigo_right_1.png"));
     animation[Right].push_back(QPixmap(":/sprites final/enemigo/enemigo_right_2.png"));
     animation[Right].push_back(QPixmap(":/sprites final/enemigo/enemigo_right_3.png"));
     animation[Right].push_back(QPixmap(":/sprites final/enemigo/enemigo_right_4.png"));
-    animation[Right].push_back(QPixmap(":/sprites final/enemigo/enemigo_right_5.png"));
 
     animation[Down].push_back(QPixmap(":/sprites final/enemigo/enemigo_down_1.png"));
     animation[Down].push_back(QPixmap(":/sprites final/enemigo/enemigo_down_2.png"));
     animation[Down].push_back(QPixmap(":/sprites final/enemigo/enemigo_down_3.png"));
     animation[Down].push_back(QPixmap(":/sprites final/enemigo/enemigo_down_4.png"));
-    animation[Down].push_back(QPixmap(":/sprites final/enemigo/enemigo_down_5.png"));
 
     animation[Left].push_back(QPixmap(":/sprites final/enemigo/enemigo_left_1.png"));
     animation[Left].push_back(QPixmap(":/sprites final/enemigo/enemigo_left_2.png"));
     animation[Left].push_back(QPixmap(":/sprites final/enemigo/enemigo_left_3.png"));
     animation[Left].push_back(QPixmap(":/sprites final/enemigo/enemigo_left_4.png"));
-    animation[Left].push_back(QPixmap(":/sprites final/enemigo/enemigo_left_5.png"));
 }
 
 void Enemigo::moveAutomatically() {
@@ -72,4 +70,10 @@ void Enemigo::moveAutomatically() {
     }
 
     Anim_Frame = (Anim_Frame + 1) % animation[direction].size(); // Incrementar frame de animacion
+}
+
+void Enemigo::set_movement(bool is_in_movement)
+{
+    if(is_in_movement) time->start(50);
+    else time->stop();
 }

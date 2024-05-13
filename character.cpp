@@ -4,6 +4,8 @@
 #include "macros_game.h"
 #include "gameobject.h"
 #include "picture_management.h"
+#include <QKeyEvent>
+
 
 Character::Character()
     : GameObject(GameObject::Character, QPixmap(":/sprites final/personaje sprites/personaje_right_1.png")) {
@@ -68,6 +70,7 @@ void Character::addLifeSpritesToScene(QGraphicsScene* scene) {
         scene->addItem(lifeSprite);
     }
 }
+
 
 
 /*
@@ -156,6 +159,8 @@ void Character::takeDamage(int damage) {
     health -= finalDamage;
 }
 */
+
+
 
 Character::~Character() {
     // Eliminar los sprites de vida creados anteriormente

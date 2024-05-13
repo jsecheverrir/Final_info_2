@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     character.cpp \
     enemigo.cpp \
+    game_rules.cpp \
     gameobject.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 HEADERS += \
     character.h \
     enemigo.h \
+    game_rules.h \
     gameobject.h \
     macros_game.h \
     mainwindow.h \

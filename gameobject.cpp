@@ -54,11 +54,9 @@ GameObject::Direction GameObject::getNextDirection()
     return nextDirection;
 }
 
-// se encarga de recibir la entrada del usuario (en este caso, a través del evento de teclado), determinar la dirección
-//de movimiento correspondiente y preparar al personaje para moverse en esa dirección en el siguiente
-//ciclo de actualización del juego.
 
-void GameObject::setNextDirection(Direction dir) //y esto que, lo necesito para mover el personaje
+
+void GameObject::setNextDirection(Direction dir)
 {
     nextDirection = dir;
 }

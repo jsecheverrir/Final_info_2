@@ -33,6 +33,8 @@ public:
     void load_sprites();
     void addLifeSpritesToScene(QGraphicsScene* scene);
 
+public slots:
+    void shootOrb(QGraphicsScene* scene);
 
 private:
     int posX;

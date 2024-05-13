@@ -31,6 +31,8 @@
 #define x_inicial_personaje 10
 #define y_inicial_personaje 210
 #define scale_factor 2
+#define x_inicial_2 260
+#define y_inicial_2 350
 
 //macros enemigo
 

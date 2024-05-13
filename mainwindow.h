@@ -11,6 +11,7 @@
 #include "gameobject.h"
 #include "character.h"
 #include "enemigo.h"
+#include "game_rules.h"
 
 
 class Character;
@@ -38,20 +39,25 @@ private:
     picture_management *img;
     QGraphicsScene *Scene;
     Character *character;
+    Character *character2;
     Enemigo *enemigo;
-
+    game_rules *game;
 
     void load_start_window();
     void load_game_window();
+    void load_level_2();
     void change_window_size(unsigned short width, unsigned short height);
     void resize_widget(QPixmap img, QWidget *obj);
     void set_off_windows();
+
 
 
 private slots:
     void cambiar_pantalla();
     void keyPressEvent(QKeyEvent *k);
     void iniciarMovimientoEnemigo();
+
+
 
 public slots:
 };
