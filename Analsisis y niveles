@@ -1,0 +1,31 @@
+Contextualización
+“De la mano de un poderoso hechicero de la una poderosa orden de seres omnipotentes, los dinosaurios se han convertido en un peligro para el planeta, su poder cada 
+vez se vuelve mayor y ya es casi imposible contenerlos. La orden mayor ha decido mandar a la deidad más poderosa al mundo a hacer lo que sea necesario para contenerlos, 
+así esto implique erradicar esta especie por completo y acabar con aquel que una vez fue su compañero.”
+Este es entonces el tema del juego propuesto, 3 niveles en los cuales el personaje principal debe enfrentarse a los enemigos y vencerlos a todos para poder ganar. 
+
+1er nivel
+En primer nivel tendremos a nuestro personaje principal con movimiento en 4 direcciones (arriba, abajo, izquierda y derecha). También hay solo un enemigo que se mueve 
+en 2 direcciones (izquierda y derecha). Para poder pasar al segundo nivel este debe ser derrotado. Ambos disparan proyectiles. 
+El mapa estará delimitado para que el personaje pueda moverse únicamente en la parte deseada.
+
+2do nivel
+Este nivel es semejante al juego de naves, el personaje podrá moverse en 2 direcciones (derecha e izquierda). Irá avanzando por el mapa verticalmente mientras salen
+enemigos del frente del personaje y avanzan hacia el personaje principal.
+Los enemigos tendrán más vida en comparación con el nivel anterior, y a su vez, harán más daño al personaje principal. Los enemigos mueven linealmente,
+de derecha a izquierda. Para pasar al tercer nivel se debe matar a cierto número de enemigos sin morir.
+Para cambiar las físicas de movimiento en comparación al nivel anterior, partes del mapa harán que se genere fricción con el movimiento del jugador, 
+esto hará que, en determinados momentos, la velocidad de movimiento del personaje principal se vea reducida. 
+
+3er nivel
+Para nuestro tercer nivel se añade la mecánica de tiro parabólico, o salto, es similar al nivel anterior en tipos de movimiento, el personaje principal se mueve 
+en 1 dirección únicamente, hacia la derecha, pero ahora puede saltar. Tenemos el enemigo final, con mucha más vida y hace más daño al personaje principal. 
+Este enemigo se mueve en 1 direcciones, salta y dispara proyectiles. Para pasar este nivel y terminar el juego satisfactoriamente se debe matar al enemigo final 
+sin morir. 
+
+Los proyectiles de todos los niveles se mueven linealmente. Pero con el pasar del tiempo van reduciendo su velocidad, para simular resistencia al aire. Entonces
+este tipo de movimiento no es rectilíneo uniforme, ya que incluye una deceleración.
+Cada que un enemigo sea derrotado, la puntuación aumentará.
+
+
+
