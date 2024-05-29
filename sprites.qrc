@@ -39,5 +39,6 @@
         <file>sprites final/orbes enemigo/orbes enemigos.png</file>
         <file>sprites final/orbes personaje/orbes personaje.png</file>
         <file>sprites final/mapa 2.jpg</file>
+        <file>sprites final/mapa 3.jpg</file>
     </qresource>
 </RCC>

@@ -46,6 +46,7 @@ private:
     void load_start_window();
     void load_game_window();
     void load_level_2();
+    void load_level_3();
     void change_window_size(unsigned short width, unsigned short height);
     void resize_widget(QPixmap img, QWidget *obj);
     void set_off_windows();

@@ -31,8 +31,10 @@
 #define x_inicial_personaje 10
 #define y_inicial_personaje 210
 #define scale_factor 2
-#define x_inicial_2 260
+#define x_inicial_2 270
 #define y_inicial_2 350
+#define x_inicial_3 13
+#define y_inicial_3 290
 
 //macros enemigo
 
@@ -40,6 +42,13 @@
 #define y_inicial_enemigo 180
 #define maxRight 345 // Máximo límite derecho
 #define maxLeft 200  // Máximo límite izquierdo
+#define enemigo_2x 220
+#define enemigo_2y 0
+#define distanciaenemigos 100
+#define maxTop 0
+#define maxBottom 240
+#define enemigo_3x 400
+#define enemigo_3y 310
 
 //macros vidas
 #define life_scale 0.3

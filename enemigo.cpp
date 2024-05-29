@@ -12,7 +12,8 @@ Enemigo::Enemigo() :GameObject(GameObject::Enemy, QPixmap(":/sprites final/enemi
     connect(time, SIGNAL(timeout()), this, SLOT(moveAutomatically()));
     setPixmap(pixmap());
     setPos(x_inicial_enemigo, y_inicial_enemigo);
-    direction = Right;
+    //direction = Right;
+    direction = Down;
     moveSpeed = 3;
     loadSprites();
 
@@ -49,16 +50,33 @@ void Enemigo::loadSprites() {
 
 void Enemigo::moveAutomatically() {
     int newX = x();
+    int newY = y();
+
+    // Movimiento horizontal
     if (direction == Right) {
         newX += moveSpeed;
         if (newX >= maxRight)
             direction = Left;
-    } else {
+    } else if (direction == Left) {
         newX -= moveSpeed;
         if (newX <= maxLeft)
             direction = Right;
     }
+
+    // Movimiento vertical
+    if (direction == Up) {
+        newY -= moveSpeed;
+        if (newY <= maxTop)
+            direction = Down;
+    } else if (direction == Down) {
+        newY += moveSpeed;
+        if (newY >= maxBottom)
+            direction = Up;
+    }
+
     setX(newX);
+    setY(newY);
+
     if (direction == Up) {
         setPixmap(animation[Up][Anim_Frame]);
     } else if (direction == Right) {
@@ -71,6 +89,7 @@ void Enemigo::moveAutomatically() {
 
     Anim_Frame = (Anim_Frame + 1) % animation[direction].size(); // Incrementar frame de animacion
 }
+
 
 void Enemigo::set_movement(bool is_in_movement)
 {

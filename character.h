@@ -29,6 +29,7 @@ public:
     void moveDown();
     void moveLeft();
     void moveRight();
+    void jump();
     void takeDamage(int damage);
     void load_sprites();
     void addLifeSpritesToScene(QGraphicsScene* scene);

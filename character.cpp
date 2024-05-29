@@ -9,8 +9,6 @@
 
 Character::Character()
     : GameObject(GameObject::Character, QPixmap(":/sprites final/personaje sprites/personaje_right_1.png")) {
-
-
     setPixmap(set_scale(pixmap(), scale_factor));
     setPos(x_inicial_personaje, y_inicial_personaje);
     moveSpeed = 2;
@@ -150,7 +148,19 @@ void Character::moveRight() {
     setPixmap(animation[Right][Anim_Frame]);   //Frame de la animación
     setX(static_cast<int>(x())+ moveSpeed);          //Mover objeto
 }
+
+
 /*
+void Character::jump() //primer intento, no funciono
+{
+    // Verificar si el personaje no está actualmente en el aire y está en el suelo
+    if (!isJumping && onGround) {
+        setY(y() - jumpHeight);
+        isJumping = true;
+        onGround = false;
+    }
+}
+
 void Character::takeDamage(int damage) {
     // calcular daño final usando resistencia
     int finalDamage = damage - (damage * resistance / 100);

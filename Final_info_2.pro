@@ -15,6 +15,7 @@ SOURCES += \
     gameobject.cpp \
     main.cpp \
     mainwindow.cpp \
+    orbe.cpp \
     picture_management.cpp
 
 HEADERS += \
@@ -24,6 +25,7 @@ HEADERS += \
     gameobject.h \
     macros_game.h \
     mainwindow.h \
+    orbe.h \
     picture_management.h
 
 FORMS += \
@@ -36,3 +38,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     sprites.qrc
+
+DISTFILES += \
+    sprites final/mapa 3.jpg

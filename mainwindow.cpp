@@ -76,7 +76,12 @@ void MainWindow::load_level_2(){
     ui->game_scene->setVisible(true);
 }
 
-
+void MainWindow::load_level_3(){
+    ui->game_scene->setGeometry(0, 0, width(), height());
+    ui->graphicsView->setGeometry(ui->game_scene->geometry());
+    resize_widget(game_rules::background_picture(3), ui->game_scene);
+    ui->game_scene->setVisible(true);
+}
 
 void MainWindow::change_window_size(unsigned short width, unsigned short height)
 {
