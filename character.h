@@ -4,6 +4,7 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
 #include "gameobject.h"
+#include "orbe.h"
 
 class Character : public GameObject {
     int moveSpeed;
@@ -29,13 +30,11 @@ public:
     void moveDown();
     void moveLeft();
     void moveRight();
-    void jump();
-    void takeDamage(int damage);
     void load_sprites();
     void addLifeSpritesToScene(QGraphicsScene* scene);
 
 public slots:
-    void shootOrb(QGraphicsScene* scene);
+
 
 private:
     int posX;

@@ -3,9 +3,10 @@
 #include <QGraphicsScene>
 #include "macros_game.h"
 #include "gameobject.h"
-#include "picture_management.h"
 #include <QKeyEvent>
-
+#include "orbe.h"
+#include <QTimer>
+#include <QDebug>
 
 Character::Character()
     : GameObject(GameObject::Character, QPixmap(":/sprites final/personaje sprites/personaje_right_1.png")) {
@@ -14,6 +15,9 @@ Character::Character()
     moveSpeed = 2;
     health = 3;
     maxHealth = 5;
+    setFocus();
+    //movementTimer = new QTimer;
+    //connect(movementTimer, SIGNAL(timeout()), this, SLOT(move()));
 
 }
 
@@ -69,9 +73,6 @@ void Character::addLifeSpritesToScene(QGraphicsScene* scene) {
     }
 }
 
-
-
-/*
 int Character::getPosX() const {
     return posX;
 }
@@ -79,7 +80,7 @@ int Character::getPosX() const {
 int Character::getPosY() const {
     return posY;
 }
-
+/*
 int Character::getHealth() const {
     return health;
 }
@@ -113,7 +114,7 @@ void Character::setResistance(int _resistance) {
 }
 */
 
-void Character::moveUp() {  //metodos de movimiento, el problema es que esto no
+void Character::moveUp() {  //metodos de movimiento
     Anim_Frame++;
     if(Anim_Frame == animation[Up].size()) {
         Anim_Frame = 0;
@@ -150,25 +151,6 @@ void Character::moveRight() {
 }
 
 
-/*
-void Character::jump() //primer intento, no funciono
-{
-    // Verificar si el personaje no está actualmente en el aire y está en el suelo
-    if (!isJumping && onGround) {
-        setY(y() - jumpHeight);
-        isJumping = true;
-        onGround = false;
-    }
-}
-
-void Character::takeDamage(int damage) {
-    // calcular daño final usando resistencia
-    int finalDamage = damage - (damage * resistance / 100);
-
-    // actualizar vida con el daño por enemigo
-    health -= finalDamage;
-}
-*/
 
 
 

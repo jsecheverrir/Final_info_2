@@ -16,12 +16,15 @@ public:
     game_rules(QGraphicsView *graph);
     static QPixmap background_picture(int level);
     void move_character(QKeyEvent *k);
+    void shoot (QKeyEvent *k);
 
 private:
     QGraphicsView *graphics_scene;
     QGraphicsScene *scene;
     QVector<Enemigo *> total_enemies;
     Character *player;
+    orbe *newOrbe;
+
 
     void load_level_1();
     void clear_elements();

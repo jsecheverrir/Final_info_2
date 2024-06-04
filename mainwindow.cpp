@@ -3,9 +3,6 @@
 #include <QTimer>
 #include <QKeyEvent>
 
-#include "character.h"
-#include "enemigo.h"
-
 #include "macros_game.h"
 
 MainWindow::MainWindow(QWidget *parent)

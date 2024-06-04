@@ -2,14 +2,15 @@
 #define ORBE_H
 #include "gameobject.h"
 
-class orbe : public GameObject{
+class orbe :public QObject, public GameObject {
     int speed;
 public:
     orbe();
-    void move();
+    ~orbe();
+
 
 private:
-    QTimer *movementTimer;
+
 
 
 
