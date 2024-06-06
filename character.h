@@ -32,6 +32,8 @@ public:
     void moveRight();
     void load_sprites();
     void addLifeSpritesToScene(QGraphicsScene* scene);
+    void shootOrbe();
+    orbe* getOrbe() const;
 
 public slots:
 
@@ -48,6 +50,7 @@ private:
     QVector<QPixmap> animation[4];
     std::vector<GameObject*> lifeSprites;
     Character* vida;
+    orbe *newOrbe;
 };
 
 #endif // CHARACTER_H

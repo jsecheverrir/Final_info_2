@@ -13,7 +13,6 @@ class Enemigo : public QObject, public GameObject {
     int moveSpeed;
 public:
     Enemigo(); // Constructor
-     // Método para el movimiento automático
     void set_movement(bool is_in_movement);
 
 private:

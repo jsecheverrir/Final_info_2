@@ -16,9 +16,6 @@ Character::Character()
     health = 3;
     maxHealth = 5;
     setFocus();
-    //movementTimer = new QTimer;
-    //connect(movementTimer, SIGNAL(timeout()), this, SLOT(move()));
-
 }
 
 void Character::load_sprites() {
@@ -150,8 +147,31 @@ void Character::moveRight() {
     setX(static_cast<int>(x())+ moveSpeed);          //Mover objeto
 }
 
+void Character::shootOrbe() {
+    qDebug() << "Método shootOrbe() llamado";
+
+    // Creamos un nuevo orbe
+    orbe *newOrbe = new orbe();
+    qDebug() << "Nuevo orbe creado";
+
+    // Establecemos la posición inicial del orbe
+    newOrbe->setPos(x(), y());
+    qDebug() << "Posición inicial del orbe establecida";
+
+    // Agregamos el orbe a la escena
+    scene->addItem(this);
+    qDebug() << "Orbe agregado a la escena";
+
+    // Iniciamos el movimiento del orbe
+    newOrbe->startMoving();
+    qDebug() << "Movimiento del orbe iniciado";
+}
 
 
+
+orbe* Character::getOrbe() const {
+    return newOrbe;
+}
 
 
 Character::~Character() {
@@ -159,4 +179,5 @@ Character::~Character() {
     for (GameObject* lifeSprite : lifeSprites) {
         delete lifeSprite;
     }
+    delete newOrbe;
 }

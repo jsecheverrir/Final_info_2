@@ -55,4 +55,7 @@
 #define initialX 20
 #define initialY 20
 
+//macros orbe
+#define scale_orbe 10
+
 #endif // MACROS_GAME_H

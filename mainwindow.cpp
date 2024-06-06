@@ -119,6 +119,7 @@ void MainWindow::cambiar_pantalla()
 void MainWindow::keyPressEvent(QKeyEvent *k)
 {
     game->move_character(k);
+    game->shoot (k);
 }
 
 

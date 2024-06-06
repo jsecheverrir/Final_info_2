@@ -6,8 +6,8 @@ game_rules::game_rules(QGraphicsView *graph) {
     scene = new QGraphicsScene;
     graphics_scene->setScene (scene);
 
-    load_level_1();
-    //load_level_2();
+    //load_level_1();
+    load_level_2();
     //load_level_3();
 
 }
@@ -94,7 +94,7 @@ void game_rules::load_level_2()
         total_enemies[i]->setPos(enemigo_2x + i * distanciaenemigos, enemigo_2y);
         total_enemies[i]->set_movement(true);
         scene->addItem(total_enemies[i]);
-        qDebug() << "Posición x del enemigo" << i << ":" << enemigo_2x;
+        //qDebug() << "Posición x del enemigo" << i << ":" << enemigo_2x;
     }
 
     for(int i=0;i<total_enemies.length ();i++){
@@ -134,3 +134,21 @@ void game_rules::load_level_3()
 
 }
 
+void game_rules::shoot(QKeyEvent *k) {
+    switch (k->key()) {
+    case Qt::Key_O:
+        qDebug() << "Tecla O presionada";
+        if (player) {
+            player->shootOrbe();
+            orbe *playerOrbe = player->getOrbe();
+            if (playerOrbe) {
+                playerOrbe->startMoving();
+            } else {
+                qDebug() << "El orbe no se ha creado correctamente.";
+            }
+        } else {
+            qDebug() << "El personaje no está inicializado.";
+        }
+        break;
+    }
+}

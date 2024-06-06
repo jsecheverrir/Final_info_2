@@ -9,6 +9,7 @@
 #include "picture_management.h"
 #include <QKeyEvent>
 #include "macros_game.h"
+#include <QDebug>
 
 class game_rules
 {
@@ -16,7 +17,8 @@ public:
     game_rules(QGraphicsView *graph);
     static QPixmap background_picture(int level);
     void move_character(QKeyEvent *k);
-    void shoot (QKeyEvent *k);
+public slots:
+    void shoot(QKeyEvent *k);
 
 private:
     QGraphicsView *graphics_scene;
@@ -24,6 +26,7 @@ private:
     QVector<Enemigo *> total_enemies;
     Character *player;
     orbe *newOrbe;
+
 
 
     void load_level_1();
