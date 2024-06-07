@@ -12,20 +12,31 @@ orbe::orbe():GameObject(GameObject::Orbe, QPixmap(":/sprites final/orbes persona
 
 
 void orbe::moveOrbe() {
+    qDebug() << "Método moveOrbe() llamado. Posición actual:" << pos();
+
     // Movemos el orbe hacia arriba
-    qDebug() << "Método moveOrbe() llamado";
     setY(y() - speed);
+    qDebug() << "Orbe movido. Nueva posición:" << pos();
 
     // Si el orbe sale de la escena, lo eliminamos
     if (y() + pixmap().height() < 0) {
-        scene()->removeItem(this);
+        qDebug() << "El orbe ha salido de la escena. Eliminando orbe.";
+        if (scene()) {
+            scene()->removeItem(this);
+        }
+        // Comentamos temporalmente la eliminación directa
         delete this;
     }
 }
 
+
+
+
 void orbe::startMoving() {
     qDebug() << "Método startMoving() llamado";
-    timer->start(50); // Ajusta el intervalo de tiempo según sea necesario
+    QTimer *timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &orbe::moveOrbe);
+    timer->start(50);
     qDebug() << "Temporizador iniciado";
 }
 

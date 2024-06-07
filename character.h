@@ -32,8 +32,8 @@ public:
     void moveRight();
     void load_sprites();
     void addLifeSpritesToScene(QGraphicsScene* scene);
-    void shootOrbe();
-    orbe* getOrbe() const;
+    void shootOrbe(QGraphicsScene* scene);
+
 
 public slots:
 

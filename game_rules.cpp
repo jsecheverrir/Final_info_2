@@ -7,8 +7,8 @@ game_rules::game_rules(QGraphicsView *graph) {
     graphics_scene->setScene (scene);
 
     //load_level_1();
-    load_level_2();
-    //load_level_3();
+    //load_level_2();
+    load_level_3();
 
 }
 
@@ -48,6 +48,7 @@ void game_rules::move_character(QKeyEvent *k)
         break;
     }
 }
+
 
 void game_rules::load_level_1()
 {
@@ -139,16 +140,11 @@ void game_rules::shoot(QKeyEvent *k) {
     case Qt::Key_O:
         qDebug() << "Tecla O presionada";
         if (player) {
-            player->shootOrbe();
-            orbe *playerOrbe = player->getOrbe();
-            if (playerOrbe) {
-                playerOrbe->startMoving();
-            } else {
-                qDebug() << "El orbe no se ha creado correctamente.";
-            }
+            player->shootOrbe(scene);
         } else {
             qDebug() << "El personaje no está inicializado.";
         }
         break;
     }
 }
+

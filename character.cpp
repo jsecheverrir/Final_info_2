@@ -147,31 +147,41 @@ void Character::moveRight() {
     setX(static_cast<int>(x())+ moveSpeed);          //Mover objeto
 }
 
-void Character::shootOrbe() {
+void Character::shootOrbe(QGraphicsScene* scene) {
     qDebug() << "Método shootOrbe() llamado";
-
-    // Creamos un nuevo orbe
     orbe *newOrbe = new orbe();
     qDebug() << "Nuevo orbe creado";
 
     // Establecemos la posición inicial del orbe
     newOrbe->setPos(x(), y());
-    qDebug() << "Posición inicial del orbe establecida";
+    qDebug() << "Posición inicial del orbe establecida en:" << newOrbe->pos();
 
-    // Agregamos el orbe a la escena
-    scene->addItem(this);
-    qDebug() << "Orbe agregado a la escena";
+    // Verificamos si la escena está establecida
+    if (scene) {
+        qDebug() << "La escena está disponible";
 
-    // Iniciamos el movimiento del orbe
-    newOrbe->startMoving();
-    qDebug() << "Movimiento del orbe iniciado";
+        // Intentamos agregar el orbe a la escena
+        if (newOrbe) {
+            qDebug() << "Agregando el orbe a la escena";
+            scene->addItem(newOrbe);
+            qDebug() << "Orbe agregado a la escena";
+
+            // Iniciamos el movimiento del orbe
+            newOrbe->startMoving();
+            qDebug() << "Movimiento del orbe iniciado";
+        } else {
+            qDebug() << "El orbe es nulo y no puede ser agregado a la escena";
+        }
+    } else {
+        qDebug() << "La escena no está disponible";
+    }
 }
 
 
 
-orbe* Character::getOrbe() const {
-    return newOrbe;
-}
+
+
+
 
 
 Character::~Character() {
