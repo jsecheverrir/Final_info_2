@@ -17,6 +17,7 @@ public:
     game_rules(QGraphicsView *graph);
     static QPixmap background_picture(int level);
     void move_character(QKeyEvent *k);
+    void setupEnemyDirection(Enemigo *enemy, int level);
 public slots:
     void shoot(QKeyEvent *k);
 
@@ -26,6 +27,7 @@ private:
     QVector<Enemigo *> total_enemies;
     Character *player;
     orbe *newOrbe;
+    Enemigo *enemy;
 
 
 
@@ -33,6 +35,7 @@ private:
     void clear_elements();
     void load_level_2();
     void load_level_3();
+
 };
 
 #endif // GAME_RULES_H

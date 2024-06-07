@@ -6,15 +6,24 @@
 #include <QTimer>
 #include <QKeyEvent>
 #include "macros_game.h"
+#include "enemigo.h"
 
 class orbe :public QObject, public GameObject {
-    int speed;
+    float speed; //velocidad actual orbe
+    float initialSpeed; //velocidad inicial
+    float mass; //masa del orbe
+    float force; //fuerza aplicada al orbe
+    float timeInterval; //intervalo de tiempo de actualizacion
+
+
 public:
     orbe();
     ~orbe();
 
     void moveOrbe();
     void startMoving();
+signals:
+    void scoreIncreased(int amount);
 
 
 private:

@@ -4,6 +4,7 @@
 #include "macros_game.h"
 #include <QTimer>
 #include <QObject>
+#include "game_rules.h"
 
 
 Enemigo::Enemigo() :GameObject(GameObject::Enemy, QPixmap(":/sprites final/enemigo/enemigo_right_1.png"))  {
@@ -12,12 +13,10 @@ Enemigo::Enemigo() :GameObject(GameObject::Enemy, QPixmap(":/sprites final/enemi
     connect(time, SIGNAL(timeout()), this, SLOT(moveAutomatically()));
     setPixmap(pixmap());
     setPos(x_inicial_enemigo, y_inicial_enemigo);
-    //direction = Right;
-    direction = Down;
+    direction = Right;
+    //direction = Down;
     moveSpeed = 3;
     loadSprites();
-
-
 }
 
 void Enemigo::loadSprites() {

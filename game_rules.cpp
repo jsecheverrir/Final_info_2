@@ -6,9 +6,9 @@ game_rules::game_rules(QGraphicsView *graph) {
     scene = new QGraphicsScene;
     graphics_scene->setScene (scene);
 
-    //load_level_1();
+    load_level_1();
     //load_level_2();
-    load_level_3();
+    //load_level_3();
 
 }
 
@@ -21,6 +21,16 @@ QPixmap game_rules::background_picture(int level)
     if (level==3) img.load_picture (":/sprites final/mapa 3.jpg");
 
     return img.get_picture();
+}
+
+void game_rules::setupEnemyDirection(Enemigo *enemy, int level) {
+    if (level == 1) {
+        enemy->setNextDirection(GameObject::Right);
+    } else if (level == 2) {
+        enemy->setNextDirection(GameObject::Down);
+    } else if (level == 3) {
+        enemy->setNextDirection(GameObject::Right);
+    }
 }
 
 void game_rules::move_character(QKeyEvent *k)
