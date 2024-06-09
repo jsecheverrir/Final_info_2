@@ -10,8 +10,7 @@ orbe::orbe():GameObject(GameObject::Orbe, QPixmap(":/sprites final/orbes persona
     timeInterval = 0.05; //50ms
     timer = new QTimer;
     connect(timer, &QTimer::timeout, this, &orbe::moveOrbe);
-
-
+    connect(shootingTimer, &QTimer::timeout, this, &Enemigo::shoot);
 }
 
 
@@ -65,6 +64,15 @@ void orbe::startMoving() {
     qDebug() << "Temporizador iniciado";
 }
 
+void orbe::enemShoot(int step) {
+    if (!step)
+        return;
+
+    // Mover hacia abajo utilizando la velocidad del orbe
+    setY(y() + speed);
+
+    qDebug() << "Moviendo la orbe hacia abajo desde orbe::enemShoot(). Posición actual: (" << x() << ", " << y() << ")";
+}
 
 
 

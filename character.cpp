@@ -111,40 +111,36 @@ void Character::setResistance(int _resistance) {
 }
 */
 
-void Character::moveUp() {  //metodos de movimiento
-    Anim_Frame++;
-    if(Anim_Frame == animation[Up].size()) {
-        Anim_Frame = 0;
+void Character::moveUp() {
+    if (Anim_Frame < animation[Up].size()) {
+        setPixmap(animation[Up][Anim_Frame]);   //Frame de la animación
     }
-    setPixmap(animation[Up][Anim_Frame]);   //Frame de la animación
-    setY(static_cast<int>(y()) - moveSpeed);          //Mover objeto
+    setY(static_cast<int>(y()) - moveSpeed);   //Mover objeto
+    Anim_Frame = (Anim_Frame + 1) % animation[Up].size();  // Incrementar frame de animacion
 }
 
 void Character::moveDown() {
-    Anim_Frame++;
-    if(Anim_Frame == animation[Down].size()) {
-        Anim_Frame = 0;
+    if (Anim_Frame < animation[Down].size()) {
+        setPixmap(animation[Down][Anim_Frame]);   //Frame de la animación
     }
-    setPixmap(animation[Down][Anim_Frame]);   //Frame de la animación
-    setY(static_cast<int>(y()) + moveSpeed);          //Mover objeto
+    setY(static_cast<int>(y()) + moveSpeed);   //Mover objeto
+    Anim_Frame = (Anim_Frame + 1) % animation[Down].size();  // Incrementar frame de animacion
 }
 
 void Character::moveLeft() {
-    Anim_Frame++;
-    if(Anim_Frame == animation[Left].size()) {
-        Anim_Frame = 0;
+    if (Anim_Frame < animation[Left].size()) {
+        setPixmap(animation[Left][Anim_Frame]);   //Frame de la animación
     }
-    setPixmap(animation[Left][Anim_Frame]);   //Frame de la animación
-    setX(static_cast<int>(x())- moveSpeed);          //Mover objeto
+    setX(static_cast<int>(x()) - moveSpeed);   //Mover objeto
+    Anim_Frame = (Anim_Frame + 1) % animation[Left].size();  // Incrementar frame de animacion
 }
 
 void Character::moveRight() {
-    Anim_Frame++;
-    if(Anim_Frame == animation[Right].size()) {
-        Anim_Frame = 0;
+    if (Anim_Frame < animation[Right].size()) {
+        setPixmap(animation[Right][Anim_Frame]);   //Frame de la animación
     }
-    setPixmap(animation[Right][Anim_Frame]);   //Frame de la animación
-    setX(static_cast<int>(x())+ moveSpeed);          //Mover objeto
+    setX(static_cast<int>(x()) + moveSpeed);   //Mover objeto
+    Anim_Frame = (Anim_Frame + 1) % animation[Right].size();  // Incrementar frame de animacion
 }
 
 void Character::shootOrbe(QGraphicsScene* scene) {

@@ -10,13 +10,16 @@
 Enemigo::Enemigo() :GameObject(GameObject::Enemy, QPixmap(":/sprites final/enemigo/enemigo_right_1.png"))  {
 
     time = new QTimer;
+    shootingTimer = new QTimer;
     connect(time, SIGNAL(timeout()), this, SLOT(moveAutomatically()));
+    //connect(shootingTimer, &QTimer::timeout, this, &Enemigo::shoot);
     setPixmap(pixmap());
     setPos(x_inicial_enemigo, y_inicial_enemigo);
-    direction = Right;
-    //direction = Down;
+    //direction = Right;
+    direction = Down;
     moveSpeed = 3;
     loadSprites();
+    shootingTimer->start(2000);
 }
 
 void Enemigo::loadSprites() {
@@ -76,17 +79,10 @@ void Enemigo::moveAutomatically() {
     setX(newX);
     setY(newY);
 
-    if (direction == Up) {
-        setPixmap(animation[Up][Anim_Frame]);
-    } else if (direction == Right) {
-        setPixmap(animation[Right][Anim_Frame]);
-    } else if (direction == Down) {
-        setPixmap(animation[Down][Anim_Frame]);
-    } else if (direction == Left) {
-        setPixmap(animation[Left][Anim_Frame]);
+    if (animation[direction].size() > 0) {
+        Anim_Frame = (Anim_Frame + 1) % animation[direction].size(); // Incrementar frame de animacion
+        setPixmap(animation[direction][Anim_Frame]);
     }
-
-    Anim_Frame = (Anim_Frame + 1) % animation[direction].size(); // Incrementar frame de animacion
 }
 
 
@@ -95,3 +91,25 @@ void Enemigo::set_movement(bool is_in_movement)
     if(is_in_movement) time->start(50);
     else time->stop();
 }
+
+
+
+void Enemigo::shoot() {
+    orbe *enemyOrbe = new orbe;  // Crear un nuevo orbe
+
+    // Establecer la posición inicial del orbe como la posición actual del enemigo
+    enemyOrbe->setPos(this->x(), this->y());
+
+    // Establecer la dirección del orbe hacia abajo
+    enemyOrbe->setDirection(GameObject::Down);
+
+    // Añadir el orbe a la escena
+    this->scene()->addItem(enemyOrbe);
+
+    // Llamar al método enemShoot() para mover el orbe hacia abajo
+    enemyOrbe->enemShoot(1); // Llamada para mover hacia abajo
+
+    qDebug() << "Llamando a enemShoot() desde Enemigo::shoot()";
+}
+
+

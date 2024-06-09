@@ -7,6 +7,7 @@
 #include "gameobject.h"
 #include <QTimer>
 
+
 class Enemigo : public QObject, public GameObject {
 
     Q_OBJECT
@@ -14,15 +15,21 @@ class Enemigo : public QObject, public GameObject {
 public:
     Enemigo(); // Constructor
     void set_movement(bool is_in_movement);
+    QTimer *shootingTimer;
 
 private:
     int Anim_Frame;
     QVector<QPixmap> animation[4];
     QTimer *time;
+
+
     void loadSprites();
+    void startMovingEnemy();
+
 
 private slots:
     void moveAutomatically();
+    void shoot();
 };
 
 #endif // ENEMIGO_H

@@ -6,8 +6,8 @@ game_rules::game_rules(QGraphicsView *graph) {
     scene = new QGraphicsScene;
     graphics_scene->setScene (scene);
 
-    load_level_1();
-    //load_level_2();
+    //load_level_1();
+    load_level_2();
     //load_level_3();
 
 }

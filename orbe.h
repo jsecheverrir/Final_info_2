@@ -22,8 +22,8 @@ public:
 
     void moveOrbe();
     void startMoving();
-signals:
-    void scoreIncreased(int amount);
+    void enemShoot(int step);
+
 
 
 private:
