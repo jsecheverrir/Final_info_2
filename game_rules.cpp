@@ -120,13 +120,10 @@ void game_rules::load_level_3() {
         scene->addPixmap(background);
     } else {
     }
-
-    // Configurar el jugador
     player->setPos(x_inicial_3, y_inicial_3);
     scene->addItem(player);
     player->addLifeSpritesToScene(scene);
 
-    // Configurar los enemigos
     int num_enemies = 1;
     for (int i = 0; i < num_enemies; ++i) {
         Enemigo* enemy = new Enemigo();

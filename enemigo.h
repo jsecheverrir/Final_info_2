@@ -13,10 +13,10 @@ class Enemigo : public QObject, public GameObject {
     Q_OBJECT
     int moveSpeed;
 public:
-    Enemigo(); // Constructor
+    Enemigo();
     void set_movement(bool is_in_movement);
     QTimer *shootingTimer;
-    //Enemigo *shooterEnemy;
+    void applyPush(Direction direction, float pushForce);
 
 private:
     int Anim_Frame;

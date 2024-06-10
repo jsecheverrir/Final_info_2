@@ -11,11 +11,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Establecer el título de la ventana principal
-    //setWindowTitle("DinoCrisis :la última batalla");
-    //ui->start_img->setText("DinoCrisis :la última batalla");
-    //ui->start_img->setStyleSheet("color: black; font-size: 24px; font-weight: bold;");
-    //ui->start_img->raise();
 
     set_off_windows();
     img = new picture_management;

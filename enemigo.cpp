@@ -101,4 +101,14 @@ void Enemigo::shoot() {
     }
 }
 
-
+void Enemigo::applyPush(Direction direction, float pushForce) { //segunda fisica
+    if (direction == Right) {
+        setX(x() + pushForce);
+    } else if (direction == Left) {
+        setX(x() - pushForce);
+    } else if (direction == Up) {
+        setY(y() - pushForce);
+    } else if (direction == Down) {
+        setY(y() + pushForce);
+    }
+}

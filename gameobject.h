@@ -8,7 +8,6 @@ class GameObject : public QGraphicsPixmapItem {
 public:
     enum ObjectType { Character, Enemy, Life, Orbe, Obstacle };
     enum Direction { Up = 0, Down = 1, Left = 2, Right = 3, Stop = 4 };
-    static const int width = 50; //tamaño objetos
 
     GameObject(ObjectType type, QPixmap pixmap);
     ~GameObject();
