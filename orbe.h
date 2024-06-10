@@ -11,6 +11,7 @@
 
 
 
+
 class orbe :public QObject, public GameObject {
     float speed; //velocidad actual orbe
     float initialSpeed; //velocidad inicial

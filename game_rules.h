@@ -20,6 +20,7 @@ public:
     void setupEnemyDirection(Enemigo *enemy, int level);
     void jump (QKeyEvent *k);
 
+
 public slots:
     void shoot(QKeyEvent *k);
 
@@ -31,6 +32,7 @@ private:
     Character *player;
     orbe *newOrbe;
     Enemigo *enemy;
+
 
 
 

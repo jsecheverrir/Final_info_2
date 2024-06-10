@@ -20,7 +20,6 @@ Enemigo::Enemigo() :GameObject(GameObject::Enemy, QPixmap(":/sprites final/enemi
     moveSpeed = 3;
     loadSprites();
     shootingTimer->start(2000);
-    collisionCount = 0;
 }
 
 void Enemigo::loadSprites() {
@@ -47,6 +46,11 @@ void Enemigo::loadSprites() {
     animation[Left].push_back(QPixmap(":/sprites final/enemigo/enemigo_left_2.png"));
     animation[Left].push_back(QPixmap(":/sprites final/enemigo/enemigo_left_3.png"));
     animation[Left].push_back(QPixmap(":/sprites final/enemigo/enemigo_left_4.png"));
+}
+
+int Enemigo::getCollisionCount() const{
+    return collisionCount;
+
 }
 
 void Enemigo::moveAutomatically() {
@@ -86,7 +90,6 @@ void Enemigo::set_movement(bool is_in_movement)
 }
 
 
-
 void Enemigo::shoot() {
     orbe *enemyOrbe = new orbe;
     enemyOrbe->setDirection(GameObject::Down);
@@ -116,9 +119,11 @@ void Enemigo::applyPush(Direction direction, float pushForce) { //segunda fisica
 
 void Enemigo::handleCollision() {
     collisionCount++;
+    qDebug() << "Colisiones de este enemigo: " << collisionCount;
     if (collisionCount >= 3) {
-        // El enemigo muere
         scene()->removeItem(this);
         delete this;
     }
 }
+
+

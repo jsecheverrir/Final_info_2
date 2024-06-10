@@ -38,6 +38,7 @@ void orbe::moveOrbe() {
                     qDebug() << "Colisión detectada con enemigo.";
                     enemy->applyPush(direction, 5); // Aplicar empuje al enemigo
                     enemy->handleCollision();
+
                     scene()->removeItem(this); // Eliminar el orbe, mirar si esto hace algo o si elimina el de abajo
                     delete this;
                     return;

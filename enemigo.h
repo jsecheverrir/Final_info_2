@@ -8,6 +8,7 @@
 #include <QTimer>
 
 
+
 class Enemigo : public QObject, public GameObject {
 
     Q_OBJECT
@@ -18,16 +19,18 @@ public:
     QTimer *shootingTimer;
     void applyPush(Direction direction, float pushForce);
     void handleCollision();
+    int getCollisionCount() const;
+
+
 
 private:
     int Anim_Frame;
     QVector<QPixmap> animation[4];
     QTimer *time;
     int collisionCount;
-
-
     void loadSprites();
     void startMovingEnemy();
+
 
 
 private slots:

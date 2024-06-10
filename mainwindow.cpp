@@ -41,6 +41,35 @@ void MainWindow::load_start_window()
 
     ui->start_img->setPixmap(picture);
     ui->start_img->setGeometry(start_img_x, start_img_y, ui->start_img->width(), ui->start_img->height());
+    // Agregar un título
+    QLabel *titleLabel1 = new QLabel("DinoCrisis", ui->start_window);
+    QFont titleFont1 = titleLabel1->font();
+    titleFont1.setPointSize(24);
+    titleFont1.setBold(true);
+    titleLabel1->setFont(titleFont1);
+    titleLabel1->setAlignment(Qt::AlignCenter);
+
+    // Calcular la posición vertical del primer título
+    int titleX1 = (ui->start_window->width() - titleLabel1->width()) / 2;
+    int titleY1 = 50; // Ajusta la posición vertical del primer título según sea necesario
+
+    // Establecer la posición del primer título
+    titleLabel1->move(titleX1, titleY1);
+
+    // Agregar el título "La última batalla"
+    QLabel *titleLabel2 = new QLabel("La última batalla", ui->start_window);
+    QFont titleFont2 = titleLabel2->font();
+    titleFont2.setPointSize(18);
+    titleFont2.setBold(true);
+    titleLabel2->setFont(titleFont2);
+    titleLabel2->setAlignment(Qt::AlignCenter);
+
+    // Calcular la posición vertical del segundo título
+    int titleX2 = (ui->start_window->width() - titleLabel2->width()) / 2;
+    int titleY2 = 100; // Ajusta la posición vertical del segundo título según sea necesario
+
+    // Establecer la posición del segundo título
+    titleLabel2->move(titleX2, titleY2);
     ui->start_window->setVisible(true);
 }
 

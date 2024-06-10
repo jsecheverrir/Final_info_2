@@ -39,7 +39,6 @@ private:
     picture_management *img;
     QGraphicsScene *Scene;
     Character *character;
-    Character *character2;
     Enemigo *enemigo;
     game_rules *game;
 
