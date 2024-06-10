@@ -6,8 +6,8 @@ game_rules::game_rules(QGraphicsView *graph) {
     scene = new QGraphicsScene;
     graphics_scene->setScene (scene);
 
-    //load_level_1();
-    load_level_2();
+    load_level_1();
+    //load_level_2();
     //load_level_3();
 
 }
@@ -105,9 +105,7 @@ void game_rules::load_level_2()
         total_enemies[i]->setPos(enemigo_2x + i * distanciaenemigos, enemigo_2y);
         total_enemies[i]->set_movement(true);
         scene->addItem(total_enemies[i]);
-        //qDebug() << "Posición x del enemigo" << i << ":" << enemigo_2x;
     }
-
     for(int i=0;i<total_enemies.length ();i++){
         total_enemies[i]->set_movement (true);
         scene->addItem(total_enemies[i]);
@@ -115,46 +113,40 @@ void game_rules::load_level_2()
 
 }
 
-void game_rules::load_level_3()
-{
-    picture_management img;
-
-
+void game_rules::load_level_3() {
     clear_elements();
-    //total_enemies.append(new Enemigo);
-
-    img.load_picture (":/sprites final/mapa 3.jpg");
-    scene->addPixmap (img.get_picture ());
-    player->setPos(x_inicial_3, y_inicial_3);
-    scene->addItem (player);
-    player->addLifeSpritesToScene(scene);
-
-    int num_enemies = 1;
-    for (int i = 0; i < num_enemies; ++i) {
-        total_enemies.append(new Enemigo);
-        total_enemies[i]->setPos(enemigo_3x , enemigo_3y);
-        //total_enemies[i]->set_movement(true);
-        scene->addItem(total_enemies[i]);
-        //qDebug() << "Posición x del enemigo" << i << ":" << enemigo_2x;
+    QPixmap background(":/sprites final/mapa 3.jpg");
+    if (!background.isNull()) {
+        scene->addPixmap(background);
+    } else {
     }
 
-    for(int i=0;i<total_enemies.length ();i++){
-        //total_enemies[i]->set_movement (true);
-        scene->addItem(total_enemies[i]);
+    // Configurar el jugador
+    player->setPos(x_inicial_3, y_inicial_3);
+    scene->addItem(player);
+    player->addLifeSpritesToScene(scene);
+
+    // Configurar los enemigos
+    int num_enemies = 1;
+    for (int i = 0; i < num_enemies; ++i) {
+        Enemigo* enemy = new Enemigo();
+        enemy->setPos(enemigo_3x, enemigo_3y);
+        total_enemies.append(enemy);
+        scene->addItem(enemy);
     }
 
 }
+
 
 void game_rules::shoot(QKeyEvent *k) {
     switch (k->key()) {
     case Qt::Key_O:
-        qDebug() << "Tecla O presionada";
         if (player) {
             player->shootOrbe(scene);
         } else {
-            qDebug() << "El personaje no está inicializado.";
         }
         break;
     }
 }
+
 

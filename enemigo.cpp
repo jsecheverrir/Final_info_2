@@ -12,11 +12,11 @@ Enemigo::Enemigo() :GameObject(GameObject::Enemy, QPixmap(":/sprites final/enemi
     time = new QTimer;
     shootingTimer = new QTimer;
     connect(time, SIGNAL(timeout()), this, SLOT(moveAutomatically()));
-    //connect(shootingTimer, &QTimer::timeout, this, &Enemigo::shoot);
+    connect(shootingTimer, &QTimer::timeout, this, &Enemigo::shoot);
     setPixmap(pixmap());
     setPos(x_inicial_enemigo, y_inicial_enemigo);
-    //direction = Right;
-    direction = Down;
+    direction = Right;
+    //direction = Down;
     moveSpeed = 3;
     loadSprites();
     shootingTimer->start(2000);
@@ -27,8 +27,6 @@ void Enemigo::loadSprites() {
     for (int i = 0; i < 4; ++i) {
         animation[i].clear();
     }
-
-    // Carga de sprites para cada dirección
     animation[Up].push_back(QPixmap(":/sprites final/enemigo/enemigo_up_1.png"));
     animation[Up].push_back(QPixmap(":/sprites final/enemigo/enemigo_up_2.png"));
     animation[Up].push_back(QPixmap(":/sprites final/enemigo/enemigo_up_3.png"));
@@ -53,8 +51,6 @@ void Enemigo::loadSprites() {
 void Enemigo::moveAutomatically() {
     int newX = x();
     int newY = y();
-
-    // Movimiento horizontal
     if (direction == Right) {
         newX += moveSpeed;
         if (newX >= maxRight)
@@ -64,8 +60,6 @@ void Enemigo::moveAutomatically() {
         if (newX <= maxLeft)
             direction = Right;
     }
-
-    // Movimiento vertical
     if (direction == Up) {
         newY -= moveSpeed;
         if (newY <= maxTop)
@@ -75,10 +69,8 @@ void Enemigo::moveAutomatically() {
         if (newY >= maxBottom)
             direction = Up;
     }
-
     setX(newX);
     setY(newY);
-
     if (animation[direction].size() > 0) {
         Anim_Frame = (Anim_Frame + 1) % animation[direction].size(); // Incrementar frame de animacion
         setPixmap(animation[direction][Anim_Frame]);
@@ -95,21 +87,18 @@ void Enemigo::set_movement(bool is_in_movement)
 
 
 void Enemigo::shoot() {
-    orbe *enemyOrbe = new orbe;  // Crear un nuevo orbe
-
-    // Establecer la posición inicial del orbe como la posición actual del enemigo
-    enemyOrbe->setPos(this->x(), this->y());
-
-    // Establecer la dirección del orbe hacia abajo
+    orbe *enemyOrbe = new orbe;
     enemyOrbe->setDirection(GameObject::Down);
-
-    // Añadir el orbe a la escena
-    this->scene()->addItem(enemyOrbe);
-
-    // Llamar al método enemShoot() para mover el orbe hacia abajo
-    enemyOrbe->enemShoot(1); // Llamada para mover hacia abajo
-
-    qDebug() << "Llamando a enemShoot() desde Enemigo::shoot()";
+    enemyOrbe->setPos(this->x(), this->y());
+    enemyOrbe->shooterEnemy = this;
+    if (this->scene()) {
+        if (enemyOrbe) {
+            this->scene()->addItem(enemyOrbe);
+            enemyOrbe->startMoving();
+        } else {
+        }
+    } else {
+    }
 }
 
 

@@ -54,11 +54,8 @@ void Character::load_sprites() {
     }
 }
 void Character::addLifeSpritesToScene(QGraphicsScene* scene) {
-    // Coordenadas iniciales para el primer sprite de vida, poner macros
-
     QPixmap healthPixmap(":/sprites final/heart.png");
-
-    float scaledWidth = healthPixmap.width() * life_scale; // Ajusta el factor de escala según sea necesario
+    float scaledWidth = healthPixmap.width() * life_scale;
     float scaledHeight = healthPixmap.height() * life_scale;
     QPixmap scaledHealthPixmap = healthPixmap.scaled(scaledWidth, scaledHeight);
 
@@ -144,32 +141,16 @@ void Character::moveRight() {
 }
 
 void Character::shootOrbe(QGraphicsScene* scene) {
-    qDebug() << "Método shootOrbe() llamado";
     orbe *newOrbe = new orbe();
-    qDebug() << "Nuevo orbe creado";
-
-    // Establecemos la posición inicial del orbe
+    newOrbe->setDirection(GameObject::Up);
     newOrbe->setPos(x(), y());
-    qDebug() << "Posición inicial del orbe establecida en:" << newOrbe->pos();
-
-    // Verificamos si la escena está establecida
     if (scene) {
-        qDebug() << "La escena está disponible";
-
-        // Intentamos agregar el orbe a la escena
         if (newOrbe) {
-            qDebug() << "Agregando el orbe a la escena";
             scene->addItem(newOrbe);
-            qDebug() << "Orbe agregado a la escena";
-
-            // Iniciamos el movimiento del orbe
             newOrbe->startMoving();
-            qDebug() << "Movimiento del orbe iniciado";
         } else {
-            qDebug() << "El orbe es nulo y no puede ser agregado a la escena";
         }
     } else {
-        qDebug() << "La escena no está disponible";
     }
 }
 

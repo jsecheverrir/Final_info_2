@@ -6,7 +6,9 @@
 #include <QTimer>
 #include <QKeyEvent>
 #include "macros_game.h"
+#include "gameobject.h"
 #include "enemigo.h"
+
 
 class orbe :public QObject, public GameObject {
     float speed; //velocidad actual orbe
@@ -23,11 +25,15 @@ public:
     void moveOrbe();
     void startMoving();
     void enemShoot(int step);
+    void setDirection(Direction direction);
+    Enemigo *shooterEnemy;
 
 
 
 private:
     QTimer *timer;
+    QTimer *shootingTimer;
+
 
 
 

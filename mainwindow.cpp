@@ -8,28 +8,22 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , character2(nullptr)
-
 {
     ui->setupUi(this);
 
+    // Establecer el título de la ventana principal
+    //setWindowTitle("DinoCrisis :la última batalla");
+    //ui->start_img->setText("DinoCrisis :la última batalla");
+    //ui->start_img->setStyleSheet("color: black; font-size: 24px; font-weight: bold;");
+    //ui->start_img->raise();
 
     set_off_windows();
     img = new picture_management;
     game = new game_rules(ui->graphicsView);
     connect(ui->boton1, SIGNAL(clicked(bool)), this, SLOT(cambiar_pantalla()));
-
-
-
-
-
-    // Crear una instancia de game_rules y asignarla a game, esto se queda
-
-    //game = new game_rules(ui->graphicsView);
-
     load_start_window();
-    //time->start(1000);
 }
+
 
 
 MainWindow::~MainWindow()
@@ -37,8 +31,6 @@ MainWindow::~MainWindow()
     delete ui;
     delete img;
     delete Scene;
-    //delete character;
-    //delete enemigo;
 }
 
 void MainWindow::load_start_window()

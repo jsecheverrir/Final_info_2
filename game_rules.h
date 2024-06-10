@@ -18,6 +18,7 @@ public:
     static QPixmap background_picture(int level);
     void move_character(QKeyEvent *k);
     void setupEnemyDirection(Enemigo *enemy, int level);
+
 public slots:
     void shoot(QKeyEvent *k);
 
@@ -28,6 +29,7 @@ private:
     Character *player;
     orbe *newOrbe;
     Enemigo *enemy;
+
 
 
 

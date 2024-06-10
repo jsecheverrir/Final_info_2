@@ -16,6 +16,7 @@ public:
     Enemigo(); // Constructor
     void set_movement(bool is_in_movement);
     QTimer *shootingTimer;
+    //Enemigo *shooterEnemy;
 
 private:
     int Anim_Frame;
