@@ -7,6 +7,8 @@
 #include "orbe.h"
 #include <QTimer>
 #include <QDebug>
+#include <QObject>
+
 
 Character::Character()
     : GameObject(GameObject::Character, QPixmap(":/sprites final/personaje sprites/personaje_right_1.png")) {
@@ -16,6 +18,14 @@ Character::Character()
     health = 3;
     maxHealth = 5;
     setFocus();
+    isJumping = false;
+    jumpSpeed = 0;
+    initialJumpSpeed = 8;
+    jumpAcceleration = -9.8;
+    jumpTimer = new QTimer;
+    QObject::connect(jumpTimer, &QTimer::timeout, this, &Character::updatePosition);
+
+
 }
 
 void Character::load_sprites() {
@@ -154,11 +164,28 @@ void Character::shootOrbe(QGraphicsScene* scene) {
     }
 }
 
+void Character::jump() {
+    if (!isJumping) {
+        isJumping = true;
+        jumpSpeed = initialJumpSpeed;
+        jumpTimer->start(30); // Actualizar la posición cada 30 ms
+    } else {
+    }
+}
 
-
-
-
-
+void Character::updatePosition() {
+    if (isJumping) {
+        setY(y() - jumpSpeed); // Mover el personaje según la velocidad de salto
+        jumpSpeed += jumpAcceleration * 0.03; //0.03 paso de tiempo aprox en segundos
+        // Si el personaje aterrizo
+        if (y() >= y_inicial_3) {
+            isJumping = false;
+            jumpSpeed = 0;
+            jumpTimer->stop();
+            setY(y_inicial_3);
+        }
+    }
+}
 
 
 Character::~Character() {
@@ -167,4 +194,5 @@ Character::~Character() {
         delete lifeSprite;
     }
     delete newOrbe;
+    //delete jumpTimer;
 }

@@ -17,11 +17,13 @@ public:
     void set_movement(bool is_in_movement);
     QTimer *shootingTimer;
     void applyPush(Direction direction, float pushForce);
+    void handleCollision();
 
 private:
     int Anim_Frame;
     QVector<QPixmap> animation[4];
     QTimer *time;
+    int collisionCount;
 
 
     void loadSprites();

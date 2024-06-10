@@ -15,11 +15,12 @@ Enemigo::Enemigo() :GameObject(GameObject::Enemy, QPixmap(":/sprites final/enemi
     connect(shootingTimer, &QTimer::timeout, this, &Enemigo::shoot);
     setPixmap(pixmap());
     setPos(x_inicial_enemigo, y_inicial_enemigo);
-    direction = Right;
-    //direction = Down;
+    //direction = Right;
+    direction = Down;
     moveSpeed = 3;
     loadSprites();
     shootingTimer->start(2000);
+    collisionCount = 0;
 }
 
 void Enemigo::loadSprites() {
@@ -110,5 +111,14 @@ void Enemigo::applyPush(Direction direction, float pushForce) { //segunda fisica
         setY(y() - pushForce);
     } else if (direction == Down) {
         setY(y() + pushForce);
+    }
+}
+
+void Enemigo::handleCollision() {
+    collisionCount++;
+    if (collisionCount >= 3) {
+        // El enemigo muere
+        scene()->removeItem(this);
+        delete this;
     }
 }

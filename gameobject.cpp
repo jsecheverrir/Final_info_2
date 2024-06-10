@@ -15,7 +15,7 @@ GameObject::ObjectType GameObject::getType()
     return type;
 }
 
-int GameObject::getPosX()
+int& GameObject::getPosX()
 {
     return posX;
 }

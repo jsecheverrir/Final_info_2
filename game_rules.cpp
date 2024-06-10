@@ -6,9 +6,9 @@ game_rules::game_rules(QGraphicsView *graph) {
     scene = new QGraphicsScene;
     graphics_scene->setScene (scene);
 
-    load_level_1();
+    //load_level_1();
     //load_level_2();
-    //load_level_3();
+    load_level_3();
 
 }
 
@@ -142,6 +142,21 @@ void game_rules::shoot(QKeyEvent *k) {
             player->shootOrbe(scene);
         } else {
         }
+        break;
+    }
+}
+
+void game_rules::jump(QKeyEvent *k) {
+    switch (k->key()) {
+    case Qt::Key_Space:
+        if (player) {
+            player->jump();
+            qDebug() << "Space key pressed, initiating jump";
+        } else {
+            qDebug() << "Space key pressed, but player is null";
+        }
+        break;
+    default:
         break;
     }
 }

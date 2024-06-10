@@ -17,13 +17,13 @@ void orbe::moveOrbe() {
     if (speed > 0) {
         // Movimiento del orbe
         if (direction == GameObject::Up) {
-            setY(y() - speed); // Mover hacia arriba
+            setY(y() - speed);
         } else if (direction == GameObject::Down) {
-            setY(y() + speed); // Mover hacia abajo
+            setY(y() + speed);
         } else if (direction == GameObject::Left) {
-            setX(x() - speed); // Mover hacia la izquierda
+            setX(x() - speed);
         } else if (direction == GameObject::Right) {
-            setX(x() + speed); // Mover hacia la derecha
+            setX(x() + speed);
         }
 
         float acceleration = force / mass;
@@ -37,6 +37,7 @@ void orbe::moveOrbe() {
                 if (enemy != shooterEnemy) { // Verifica si el enemigo no es el que disparó el orbe
                     qDebug() << "Colisión detectada con enemigo.";
                     enemy->applyPush(direction, 5); // Aplicar empuje al enemigo
+                    enemy->handleCollision();
                     scene()->removeItem(this); // Eliminar el orbe, mirar si esto hace algo o si elimina el de abajo
                     delete this;
                     return;

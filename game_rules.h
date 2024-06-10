@@ -18,9 +18,11 @@ public:
     static QPixmap background_picture(int level);
     void move_character(QKeyEvent *k);
     void setupEnemyDirection(Enemigo *enemy, int level);
+    void jump (QKeyEvent *k);
 
 public slots:
     void shoot(QKeyEvent *k);
+
 
 private:
     QGraphicsView *graphics_scene;

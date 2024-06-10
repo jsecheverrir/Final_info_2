@@ -107,6 +107,7 @@ void MainWindow::keyPressEvent(QKeyEvent *k)
 {
     game->move_character(k);
     game->shoot (k);
+    game->jump(k);
 }
 
 

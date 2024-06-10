@@ -13,7 +13,7 @@ public:
     ~GameObject();
 
     ObjectType getType();
-    int getPosX();
+    int& getPosX();
     void setPosX(int posX);
     int getPosY();
     void setPosY(int posY);

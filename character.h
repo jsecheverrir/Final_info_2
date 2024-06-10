@@ -6,8 +6,13 @@
 #include "gameobject.h"
 #include "orbe.h"
 
-class Character : public GameObject {
+class Character : public GameObject, public QObject {
     int moveSpeed;
+    bool isJumping;
+    float jumpSpeed;
+    float jumpAcceleration;
+    float initialJumpSpeed;
+    QTimer *jumpTimer;
 public:
     enum ObjectType { Heart, Orbe };
 
@@ -33,9 +38,11 @@ public:
     void load_sprites();
     void addLifeSpritesToScene(QGraphicsScene* scene);
     void shootOrbe(QGraphicsScene* scene);
+    void jump();
 
 
-public slots:
+private slots:
+    void updatePosition();
 
 
 private:
@@ -51,6 +58,7 @@ private:
     std::vector<GameObject*> lifeSprites;
     Character* vida;
     orbe *newOrbe;
+
 };
 
 #endif // CHARACTER_H

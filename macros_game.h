@@ -35,6 +35,7 @@
 #define y_inicial_2 350
 #define x_inicial_3 13
 #define y_inicial_3 290
+#define jumpMaxHeight 178
 
 //macros enemigo
 
