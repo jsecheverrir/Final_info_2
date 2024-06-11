@@ -35,11 +35,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QTimer *time;
     picture_management *img;
     QGraphicsScene *Scene;
-    Character *character;
-    Enemigo *enemigo;
     game_rules *game;
 
     void load_start_window();

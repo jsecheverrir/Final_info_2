@@ -102,6 +102,7 @@ void Enemigo::shoot() {
         } else {
         }
     } else {
+        delete enemyOrbe;
     }
 }
 

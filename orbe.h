@@ -26,7 +26,6 @@ public:
 
     void moveOrbe();
     void startMoving();
-    void enemShoot(int step);
     void setDirection(Direction direction);
     Enemigo *shooterEnemy;
     class Character *character;

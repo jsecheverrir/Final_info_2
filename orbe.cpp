@@ -63,11 +63,7 @@ void orbe::startMoving() {
     timer->start(static_cast<int>(timeInterval * 1000));  // Inicia el temporizador con el intervalo de tiempo en ms
 }
 
-void orbe::enemShoot(int step) { //creo que no sirve
-    if (!step)
-        return;
-    setY(y() + speed);
-}
+
 
 
 

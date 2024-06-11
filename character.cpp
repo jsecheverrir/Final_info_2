@@ -201,5 +201,5 @@ Character::~Character() {
         delete lifeSprite;
     }
     delete newOrbe;
-    //delete jumpTimer;
+    delete jumpTimer;
 }
