@@ -15,8 +15,8 @@ Enemigo::Enemigo() :GameObject(GameObject::Enemy, QPixmap(":/sprites final/enemi
     connect(shootingTimer, &QTimer::timeout, this, &Enemigo::shoot);
     setPixmap(pixmap());
     setPos(x_inicial_enemigo, y_inicial_enemigo);
-    //direction = Right;
-    direction = Down;
+    //direction = Right; //esta para nivel 1
+    direction = Down; //esta para nivel 2
     moveSpeed = 3;
     loadSprites();
     shootingTimer->start(2000);
@@ -92,7 +92,7 @@ void Enemigo::set_movement(bool is_in_movement)
 
 void Enemigo::shoot() {
     orbe *enemyOrbe = new orbe;
-    enemyOrbe->setDirection(GameObject::Down);
+    enemyOrbe->setDirection(GameObject::Left);
     enemyOrbe->setPos(this->x(), this->y());
     enemyOrbe->shooterEnemy = this;
     if (this->scene()) {

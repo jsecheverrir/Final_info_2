@@ -24,6 +24,7 @@ Character::Character()
     jumpAcceleration = -9.8;
     jumpTimer = new QTimer;
     QObject::connect(jumpTimer, &QTimer::timeout, this, &Character::updatePosition);
+    collisionCount = 0;
 
 
 }
@@ -152,7 +153,7 @@ void Character::moveRight() {
 
 void Character::shootOrbe(QGraphicsScene* scene) {
     orbe *newOrbe = new orbe();
-    newOrbe->setDirection(GameObject::Up);
+    newOrbe->setDirection(GameObject::Right);
     newOrbe->setPos(x(), y());
     if (scene) {
         if (newOrbe) {
@@ -171,6 +172,12 @@ void Character::jump() {
         jumpTimer->start(30); // Actualizar la posición cada 30 ms
     } else {
     }
+}
+
+void Character::handleCollision(){
+    collisionCount++;
+    qDebug() << "Colisiones del personaje: " << collisionCount;
+
 }
 
 void Character::updatePosition() {

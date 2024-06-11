@@ -10,7 +10,7 @@
 #include "enemigo.h"
 
 
-
+class Character;
 
 class orbe :public QObject, public GameObject {
     float speed; //velocidad actual orbe
@@ -29,6 +29,7 @@ public:
     void enemShoot(int step);
     void setDirection(Direction direction);
     Enemigo *shooterEnemy;
+    class Character *character;
 
 
 private:

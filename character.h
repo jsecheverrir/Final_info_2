@@ -6,7 +6,7 @@
 #include "gameobject.h"
 #include "orbe.h"
 
-class Character : public GameObject, public QObject {
+class Character :  public QObject, public GameObject {
     int moveSpeed;
     bool isJumping;
     float jumpSpeed;
@@ -39,6 +39,7 @@ public:
     void addLifeSpritesToScene(QGraphicsScene* scene);
     void shootOrbe(QGraphicsScene* scene);
     void jump();
+    void handleCollision();
 
 
 private slots:
@@ -53,6 +54,8 @@ private:
     int strength;
     int resistance;
     int Anim_Frame;
+    int collisionCount;
+
     QGraphicsScene* scene;
     QVector<QPixmap> animation[4];
     std::vector<GameObject*> lifeSprites;

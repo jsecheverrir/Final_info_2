@@ -36,7 +36,7 @@ void orbe::moveOrbe() {
                 Enemigo *enemy = static_cast<Enemigo*>(item);
                 if (enemy != shooterEnemy) { // Verifica si el enemigo no es el que disparó el orbe
                     qDebug() << "Colisión detectada con enemigo.";
-                    enemy->applyPush(direction, 5); // Aplicar empuje al enemigo
+                    enemy->applyPush(direction, 10); // Aplicar empuje al enemigo
                     enemy->handleCollision();
 
                     scene()->removeItem(this); // Eliminar el orbe, mirar si esto hace algo o si elimina el de abajo
